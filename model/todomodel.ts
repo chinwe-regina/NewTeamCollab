@@ -8,3 +8,15 @@ interface iTodo {
   deadLine: number;
 }
 interface iTodoData extends iTodo, Document {}
+
+const TodoSchema = new Schema<iTodo>({
+  name: {
+    type: String,
+  },
+  task: {
+    type: String,
+  },
+  completed: {
+    type: Boolean,
+  },
+});
