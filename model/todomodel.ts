@@ -1,4 +1,4 @@
-import { Document, Schema } from "mongoose";
+import { Document, Schema, model } from "mongoose";
 
 interface iTodo {
   name: string;
@@ -9,14 +9,25 @@ interface iTodo {
 }
 interface iTodoData extends iTodo, Document {}
 
-const TodoSchema = new Schema<iTodo>({
-  name: {
-    type: String,
+const TodoS = new Schema<iTodoData>(
+  {
+    name: {
+      type: String,
+    },
+    task: {
+      type: String,
+    },
+    completed: {
+      type: Boolean,
+    },
+    time: {
+      type: String,
+    },
+    deadLine: {
+      type: Number,
+    },
   },
-  task: {
-    type: String,
-  },
-  completed: {
-    type: Boolean,
-  },
-});
+  { timestamps: true }
+);
+
+export default model<iTodoData>("user", TodoS);
